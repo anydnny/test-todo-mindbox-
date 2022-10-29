@@ -63,11 +63,11 @@ const StyledForm = styled.form`
 `;
 
 const App: React.FC = () => {
-  const [todos, setTodos] = useState<IntTodo[]>([]);
+  const [todos, setTodos] = useState<IntTodo[]>([{id:Date.now(), text: "Съесть яблоко 🍎", checked: false},{id:Date.now() + 1, text: "Отжаться 1000 раз", checked: true}]);
   const [filteredTodos, setFilteredTodos] = useState<IntTodo[]>([]);
 
   const [inputValue, setInputValue] = useState("");
-  const [currentFilter, setCurrentFilter] = useState("All");
+  const [currentFilter, setCurrentFilter] = useState("Active");
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -120,7 +120,6 @@ const App: React.FC = () => {
   };
   const changeFilter = (filter: string) => {
     setCurrentFilter(filter);
-    console.log(currentFilter);
   };
   const clearCompleted = (): void => {
     setTodos(
@@ -152,7 +151,7 @@ const App: React.FC = () => {
               placeholder="Сделать тестовое задание для Mindbox"
               ref={inputRef}
             />
-            <button type="submit">add</button>
+            <button type="submit">+</button>
           </StyledForm>
           <TodoList
             todos={filteredTodos}

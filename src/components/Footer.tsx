@@ -59,10 +59,10 @@ const Footer: React.FC<IntTodoListProps> = ({
     <StyledFooter className="footer">
       <span>{leftCount} todos left</span>
       <StyledFilters>
-        <li onClick={() => changeFilter("All")} className="active">
+        <li onClick={() => changeFilter("All")} >
           All
         </li>
-        <li onClick={() => changeFilter("Active")}>Active</li>
+        <li onClick={() => changeFilter("Active")} className="active">Active</li>
         <li onClick={() => changeFilter("Completed")}>Completed</li>
       </StyledFilters>
       <button onClick={clearCompleted}>Clear Completed</button>
